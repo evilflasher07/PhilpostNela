@@ -1,0 +1,149 @@
+
+
+
+  <!-- <div class="col-md-6">
+    <form #f="ngForm" (ngSubmit)="save(f.value)">
+
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input #name="ngModel" [(ngModel)]="postoffice.name" name="name" id="name" type="text" class="form-control" required>
+            <div class="alert alert-danger" *ngIf="name.touched && name.invalid">
+              Name is required
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="address">Street/Barangay</label>
+            <input #address="ngModel" [(ngModel)]="postoffice.address" name="address" id="address" type="text" class="form-control" required>
+            <div class="alert alert-danger" *ngIf="address.touched && address.invalid">
+              Address is required
+            </div>
+          </div>
+         
+ 
+           
+          <div class="form-group">
+            <label for="province">Province</label>
+            <select #province="ngModel" [(ngModel)]="postoffice.province" name="province" id="province" class="form-control" required>
+              <option value="">Select Province</option>
+              <option *ngFor=" let c of province$ | async " [value]="c.$key">
+                {{ c.province }}
+              </option>
+            </select>
+            <div class="alert alert-danger" *ngIf="province.touched && province.invalid">
+              Province is required.
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="municipality">Municipality</label>
+            <select #municipality="ngModel" [(ngModel)]="postoffice.municipality" name="municipality" id="municipality" class="form-control" required>
+              <option value="">Select Municipality</option>
+              <option *ngFor=" let c of municipality$ | async " [value]="c.$key">
+                {{ c.municipality }}
+              </option>
+            </select>
+            <div class="alert alert-danger" *ngIf="municipality.touched && municipality.invalid">
+              Municipality is required.
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label for="zipcode">Zip Code</label>
+            <input #zipcode="ngModel" [(ngModel)]="postoffice.zipcode" name="zipcode" id="zipcode" type="Number" class="form-control" required [min]="0">
+            <div class="alert alert-danger" *ngIf="zipcode.touched && zipcode.invalid">
+              <div *ngIf="zipcode.errors.required"> Zipcode is required. </div>
+              <div *ngIf="zipcode.errors.min"> Invalid Zipcode </div>
+            </div>
+          </div>
+          
+          <button class="btn btn-primary" [disabled]="!f.valid">Save</button>
+
+          <button type="button" (click)="delete()" class="btn btn-danger">Delete</button>
+          <button type="button" (click)="back()" class="btn btn-primary">Back</button>
+          
+    </form> 
+  </div>
+ 
+
+
+ -->
+
+
+<div class="jumbotron">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 offset-md-2">
+                <h3>Create Post Office</h3>
+                <form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+                    <div class="form-group">
+                        <label for="firstName">Name</label>
+                        <input type="text" class="form-control" name="name" [(ngModel)]="model.name" #name="ngModel" [ngClass]="{ 'is-invalid': f.submitted && name.invalid }" required />
+                        <div *ngIf="f.submitted && name.invalid" class="invalid-feedback">
+                            <div *ngIf="name.errors.required">Name is required</div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="province">Province</label>
+                        <select #province="ngModel" [(ngModel)]="model.province" name="province" id="province" class="form-control" (change)="onChange($event.target.value)" [ngClass]="{ 'is-invalid': f.submitted && province.invalid }" required>
+                          <option value="">Select Province</option>
+                          <option *ngFor=" let province of provinces" [value]="province.id">
+                            {{ province.name }}
+                          </option>
+                        </select>
+                        <div class="alert alert-danger" *ngIf="f.submitted && province.invalid">
+                          Province is required.
+                        </div>
+                      </div>
+
+                    <div class="form-group">
+                        <label for="municipality">Municipality</label>
+                        <select #municipality="ngModel" [(ngModel)]="model.municipality" name="municipality" id="municipality" class="form-control"  [ngClass]="{ 'is-invalid': f.submitted && municipality.invalid }" required>
+                          <option value="">Select Municipality</option>
+                          <option *ngFor=" let city of cities" [value]="city">
+                            {{ city }}
+                          </option>
+                        </select>
+                        <div class="alert alert-danger" *ngIf="f.submitted && municipality.invalid">
+                          Municipality is required.
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="zipcode">Municipality</label>
+                        <select #zipcode="ngModel" [(ngModel)]="model.zipcode" name="zipcode" id="zipcode" class="form-control"  [ngClass]="{ 'is-invalid': f.submitted && zipcode.invalid }" required>
+                          <option value="">Select Municipality</option>
+                          <option *ngFor=" let zipcode of zipcodes" [value]="zipcode">
+                            {{ zipcode }}
+                          </option>
+                        </select>
+                        <div class="alert alert-danger" *ngIf="f.submitted && municipality.invalid">
+                          Municipality is required.
+                        </div>
+                    </div>
+
+                      
+
+                    
+                    <div class="form-group">
+                        <label for="zipcode">Zip Code</label>
+                        <input type="text" class="form-control" name="zipcode" [(ngModel)]="model.zipcode" #lastName="ngModel" [ngClass]="{ 'is-invalid': f.submitted && zipcode.invalid }" (change)="onChange($event.target.value)" [value]="province.id"  required />
+                        {{ zipcode }}
+                        <div *ngIf="f.submitted && zipcode.invalid" class="invalid-feedback">
+                            <div *ngIf="zipcode.errors.required">Zipcode is required</div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <button class="btn btn-primary">Submit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
