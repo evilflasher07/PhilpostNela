@@ -1,0 +1,7 @@
+input.empty {
+    font-family: FontAwesome;
+    font-style: italic;
+    font-weight: normal;
+    font-stretch: ultra-expanded;
+    text-decoration: inherit;
+}

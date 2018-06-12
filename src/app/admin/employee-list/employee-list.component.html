@@ -1,0 +1,36 @@
+
+
+<h6 class="text-center">Employee List</h6><br/>
+
+    <div class="input-group">
+        <input type="text" class="form-control empty" [(ngModel)]="term" placeholder="&#xF002; Search..." width="30px">   
+    </div>
+
+<table class="table table-sm table-hover">
+   <tr>    
+       <th>First Name</th>
+       <th>Middle Name</th>
+       <th>Last Name</th>
+       <th>Address</th>
+       <th>Position</th>
+       <th>Contact Number</th>
+       <th>&nbsp;</th>
+   </tr>
+   <tr *ngFor = "let employee of employeeList| paginate: {itemsPerPage:5,currentPage:p}|filter:term"> 
+        <td>{{employee.fname}}</td>
+        <td>{{employee.mname}}</td>
+        <td>{{employee.lname}}</td>
+        <td>{{employee.address}}</td>
+        <td>{{employee.position}}</td>
+        <td>{{employee.contactnumber}}</td>
+        <td>
+            <a class="btn" (click)="onEdit(employee)">
+                <i class="far fa-edit"></i>
+            </a>
+            <a class="btn" (click)="onDelete(employee.$key)">
+                <i class="fas fa-trash-alt"></i>
+            </a>
+        </td>
+   </tr> 
+</table>
+<pagination-controls (pageChange)="p=$event"></pagination-controls>

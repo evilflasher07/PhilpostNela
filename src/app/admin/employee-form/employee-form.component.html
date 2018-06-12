@@ -1,9 +1,94 @@
-<div>
-   <form [formGroup] = "employeeForm" (submit)="showData()">
-       <div>
-           Category:
-           <input type="text" formControlName = "category">
-       </div>
-       <input type="submit" value = "Click Me">
-   </form> 
-</div>
+
+
+
+  
+      
+        <!-- <div class="postofficeform-container">
+            <div class="top-glare" aria-hidden="true"></div>
+            <img aria-hidden="true" src="http://icons.iconarchive.com/icons/icons8/windows-8/48/City-Post-Office-icon.png" alt="" />
+            <div style="text-align:center">
+              <h1>
+                Register Post Office
+              </h1>
+            </div>
+           
+              <div class="form-field">
+                <label class="control-label" for="Province">Province:</label>
+                <select *ngIf="getProvinces()" [(ngModel)]="selectedProvince" (change)="onSelectProvince($event.target.value)" class="form-control input-lg" id="country" #province="ngModel"  >
+                   <option value="0">Select Province</option>
+                  <option *ngFor="let country of getProvinces()" value= {{country.id}}>{{country.name}}</option>
+                </select>
+              </div>
+            
+    
+              <div class="form-field">
+                <label class="control-label" for="Cities">City/Municipality:</label>
+                <select *ngIf="cities" [(ngModel)]="selectedCity" (change)="onSelectCity($event.target.value)" class="form-control input-lg" id="city">
+                    <option value="0">Select City/Municipality</option>
+                  <option *ngFor="let city of cities" value= {{city.id}}>{{city.name}}</option>
+                </select>
+              </div>
+             
+              <div class="form-field">
+                <label class="control-label" for="Zipcodes">Zipcode:</label>
+                <select class="form-control input-lg" id="city">
+                    <option *ngIf="!selectedCity" value="0"></option>
+                    <option *ngFor="let zipcode of zipcodes" value= {{zipcode.id}}>{{zipcode.name}}</option>
+                </select>
+              </div>
+            
+              <div class="form-field">
+                  <button class="btn btn-primary">Submit</button>
+              </div>
+            
+        </div>
+   -->
+   <head>
+      <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+   </head>
+   <form #employeeForm="ngForm" (ngSubmit)="onSubmit(employeeForm)">
+     <input type="hidden" name="$key" #$key="ngModel" [(ngModel)]="employeeService.selectedEmployee.$key">
+    <div class="form-group">
+       <label>First Name</label>
+       <input type="text" class="form-control" name="fname" #fname="ngModel" [(ngModel)]="employeeService.selectedEmployee.fname" placeholder="First Name"  required> 
+     </div>
+
+     <div class="form-group">
+        <label>Middle Name</label>
+        <input type="text" class="form-control" name="mname" #mname="ngModel" [(ngModel)]="employeeService.selectedEmployee.mname" placeholder="Middle Name">
+     </div>
+
+      <div class="form-group">
+          <label>Last Name</label>
+          <input type="text" class="form-control" name="lname" #lname="ngModel" [(ngModel)]="employeeService.selectedEmployee.lname" placeholder="Last Name">
+      </div>
+
+      <div class="form-group">
+          <label>Position</label>
+          <input type="text" class="form-control" name="position" #position="ngModel" [(ngModel)]="employeeService.selectedEmployee.position" placeholder="Position">
+      </div>
+
+      <div class="form-group">
+          <label>Address</label>
+          <input type="text" class="form-control" name="address" #address="ngModel" [(ngModel)]="employeeService.selectedEmployee.address" placeholder="Address">
+      </div>
+
+      <div class="form-group">
+          <label>Contact Number</label>
+          <input type="number" class="form-control" name="contactnumber" #contactnumber="ngModel" [(ngModel)]="employeeService.selectedEmployee.contactnumber" placeholder="Contact Number">
+      </div>
+
+      <div class="form-group">
+        <button class="btn btn-default" type="submit" [disabled]="!employeeForm.valid">
+          <i class="far fa-save"></i>
+          Register</button>
+        <button class="btn btn-default" type="button" (click)="resetForm(employeeForm)">
+          <i class="fas fa-redo"></i>
+          Reset</button>
+      </div>
+
+   </form>
+    
+       
+  
+

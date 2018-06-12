@@ -24,7 +24,16 @@ import { PostofficeformService } from './postofficeform.service';
 
 import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { CustomFormsModule } from 'ng2-validation';
-import { HomeComponent } from './home/home.component'
+import { HomeComponent } from './home/home.component';
+import { EmployeeListComponent } from './admin/employee-list/employee-list.component';
+import { EmployeeComponent } from './admin/employee/employee.component'
+import { EmployeeService } from './employee.service';
+
+
+import { AngularFontAwesomeModule } from 'angular-font-awesome';
+import { ToastrModule } from 'ngx-toastr';
+import {NgxPaginationModule} from 'ngx-pagination';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 @NgModule({
   declarations: [
@@ -33,7 +42,9 @@ import { HomeComponent } from './home/home.component'
     PostofficeFormComponent,
     EmployeeFormComponent,
     AreaComponent,
-    HomeComponent
+    HomeComponent,
+    EmployeeListComponent,
+    EmployeeComponent
   ],
   imports: [
     BrowserModule,
@@ -50,14 +61,20 @@ import { HomeComponent } from './home/home.component'
     ReactiveFormsModule,
 
     AngularFireModule.initializeApp(environment.firebase),
+    AngularFireDatabaseModule,
     AngularFirestoreModule, // imports firebase/firestore, only needed for database features
     AngularFireAuthModule, // imports firebase/auth, only needed for auth features,
     AngularFireStorageModule, // imports firebase/storage only needed for storage features
 
+    Ng2SearchPipeModule,
+    NgxPaginationModule,
+    AngularFontAwesomeModule,
+    ToastrModule.forRoot(),
+
     RouterModule.forRoot([
       { path: '', component: HomeComponent },
       { path: 'postofficeform', component: PostofficeFormComponent },
-      { path: 'employeeform', component: EmployeeFormComponent },
+      { path: 'employeeform', component: EmployeeComponent },
       { path: 'areaform', component: AreaComponent },
      
       
@@ -67,7 +84,8 @@ import { HomeComponent } from './home/home.component'
   
   providers: [
     AreaGeneratorService,
-    PostofficeformService
+    PostofficeformService,
+    EmployeeService
   ],
   bootstrap: [AppComponent]
 })

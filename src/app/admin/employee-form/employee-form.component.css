@@ -1,0 +1,116 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700');
+
+body{
+  background-color:#fafafa;
+}
+.table-container{
+  text-align: center;
+  width: 800px;
+  margin: 10% auto;
+  font-family: 'Open Sans', sans-serif;
+  border: 2px solid #4caf50;
+  border-top: 8px solid #3ead42;
+  border-bottom: 8px solid #3ead42;
+  padding: 3px 5px 40px 30px;
+  position:relative;
+  right:40px;
+  background-color:#FFF;
+  border-radius: 20px 20px 20px 20px;
+  box-shadow: 10px 10px 10px 10px #cacaca;
+}
+.postofficeform-container {
+  text-align: center;
+  width: 320px;
+  margin: 10% auto;
+  font-family: 'Open Sans', sans-serif;
+  border: 2px solid #4caf50;
+  border-top: 8px solid #3ead42;
+  border-bottom: 8px solid #3ead42;
+  padding: 40px 10px 40px 30px;
+  box-sizing: border-box;
+  border-radius: 120px 0px 20px 20px;
+  box-shadow: 0px 5px 14px 1px #cacaca;
+  overflow: hidden;
+  position:relative;
+  background-color:#FFF;
+}
+.postofficeform-container:after{
+  position:absolute;
+  content:'';
+  bottom:0;
+  left:0;
+  height:50px;
+  width:100%;
+  background:linear-gradient(#fff,#4caf5040);
+}
+.postofficeform-container .top-glare{
+  position:relative;
+}
+.postofficeform-container .top-glare:after{
+  content:'';
+  position:absolute;
+  height:130px;
+  width:200px;
+  right:-130px;
+  background:linear-gradient(#fff,#4caf5040);
+  transform:rotate(210deg);
+  top:-90px
+}
+.postofficeform-container h1 {
+  padding: 0;
+  margin: 0 0 25px 0;
+  color: #4caf50;
+  font-weight:300;
+}
+.postofficeform-container .form-field {
+  display: block;
+  padding-bottom: 15px;
+}
+.postofficeform-container .form-field select {
+  text-align: left;
+  display: inline-block;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 7px;
+  font-size: 16px;
+  border: 1px solid #4caf50;
+}
+.postofficeform-container .form-field label {
+  display: inline-block;
+  width: 100%;
+  text-align: left;
+  padding-bottom: 4px;
+  font-size: 17px;
+  font-weight: 400;
+  color: #6d6d6d;
+}
+.postofficeform-container .form-field input[type="submit"] {
+  padding: 12px 7px;
+  margin-top: 10px;
+  min-width: 120px;
+  background: #4caf50;
+  border: 1px solid #2c732e;
+  border-radius: 3px;
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+  text-shadow: 0px 0px 2px #000;
+}
+.postofficeform-container .form-field input[type="submit"]:hover {
+  background: #5cb960;
+}
+.postofficeform-container .form-field .forgot-pass-link {
+  color: #333;
+  font-size: 12px;
+  color: #5a5a5a;
+}
+.postofficeform-container .form-field .forgot-pass-link:hover {
+  text-decoration: none;
+}
+
+@media screen and (max-width:380px){
+  .postofficeform-container{
+    width:100%;
+    min-width:280px;
+  }
+}

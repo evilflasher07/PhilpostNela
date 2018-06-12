@@ -1,4 +1,4 @@
-export interface postoffice {
+export interface PostOffice {
     $key: string;
     name: string;
     address: string;
